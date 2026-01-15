@@ -1,0 +1,283 @@
+/* Page Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* Header */
+h2 {
+    margin: 20px 0;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+ 
+ 
+/* Horizontal Line */
+hr {
+    border: none;
+    border-top: 2px solid #007bff;
+    margin: 10px 0 20px 0;
+}
+ 
+ 
+/* Search and Filter */
+input[type="text"],
+select {
+    padding: 8px 12px;
+    margin: 10px 10px 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+ 
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+ 
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+ 
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+ 
+tr:hover {
+    background-color: #f1f1f1;
+}
+ 
+/* General Button Styling */
+button {
+    padding: 8px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+  }
+ 
+  button:hover {
+    opacity: 0.9;
+  }
+ 
+  /* Specific Action Buttons */
+  .edit-btn {
+    background-color: rgb(47, 158, 30) ;
+  }
+ 
+  button.delete-btn {
+    background-color: #dc3545; /* Red */
+  }
+ 
+  button.view-btn {
+    background-color: #007bff; /* Blue */
+  }
+ 
+  /* Status Toggle Buttons */
+  button.active-btn {
+    background-color: red ;
+  }
+ 
+  button.inactive-btn {
+    background-color: green ;
+  }
+ 
+/* Delete Confirmation */
+/* Page Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* Header */
+h2 {
+    margin: 20px 0;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+ 
+ 
+/* Horizontal Line */
+hr {
+    border: none;
+    border-top: 2px solid #007bff;
+    margin: 10px 0 20px 0;
+}
+ 
+ 
+/* Search and Filter */
+input[type="text"],
+select {
+    padding: 8px 12px;
+    margin: 10px 10px 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+ 
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+ 
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+ 
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+ 
+tr:hover {
+    background-color: #f1f1f1;
+}
+ 
+ 
+ 
+/* Modal Styling */
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+ 
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+ 
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+ 
+.close:hover {
+    color: #ff0000;
+}
+ 
+/* Resume Image */
+.modal-content img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    max-height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    z-index: 1001;
+  }
+ 
+ 
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+/* Modal Styling */
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+ 
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+ 
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+ 
+.close:hover {
+    color: #ff0000;
+}
+ 
+/* Resume Image */
+.modal-content img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    max-height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+ 
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

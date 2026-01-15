@@ -1,0 +1,77 @@
+<h2>{{trainerId > 0 ? 'Edit Trainer' :  'Add New Trainer'}}</h2>
+
+<form [formGroup]="trainerForm" (ngSubmit)="addTrainer()">
+    <div>
+        <label for="name">Name<span class="required-asterisk">*</span> :</label> <br>
+        <input type="text" name="name" id="name" formControlName="name">
+        <div *ngIf="f.name.invalid && (f.name.touched ||f.name.dirty)">
+            <div *ngIf="f.name.errors?.required" class="error-message">Name is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email<span class="required-asterisk">*</span> :</label> <br>
+        <input type="email" name="email" id="email" formControlName="email">
+        <div *ngIf="f.email.invalid && (f.email.touched ||f.email.dirty)">
+            <div *ngIf="f.email.errors?.required" class="error-message">Email is required.</div>
+            <div *ngIf="f.email.errors?.email"  class="error-message">Invalid email format</div>
+        </div>
+    </div>
+    <div>
+        <label for="phone">Phone<span class="required-asterisk">*</span> :</label> <br>
+        <input type="text" name="phone" id="phone" formControlName="phone">
+        <div *ngIf="f.phone.invalid && (f.phone.touched ||f.phone.dirty)">
+            <div *ngIf="f.phone.errors?.required"  class="error-message">Phone number is required.</div>
+            <div *ngIf="f.phone.errors?.pattern"  class="error-message">Exact 10 digits allowed</div>
+        </div>
+    </div>
+    <div>
+        <label for="expertise">Expertise<span class="required-asterisk">*</span> :</label> <br>
+        <input type="text" name="expertise" id="expertise" formControlName="expertise">
+        <div *ngIf="f.expertise.invalid && (f.expertise.touched ||f.expertise.dirty)">
+            <div *ngIf="f.expertise.errors?.required"  class="error-message">Expertise is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="experience">Experience<span class="required-asterisk">*</span> :</label> <br>
+        <input type="text" name="experience" id="experience" formControlName="experience">
+        <div *ngIf="f.experience.invalid && (f.experience.touched ||f.experience.dirty)">
+            <div *ngIf="f.experience.errors?.required"  class="error-message">Experience is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="certification">Certificate<span class="required-asterisk">*</span> :</label> <br>
+        <input type="text" name="certification" id="certification" formControlName="certification">
+        <div *ngIf="f.certification.invalid && (f.certification.touched ||f.certification.dirty)">
+            <div *ngIf="f.certification.errors?.required"  class="error-message">Certificate is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="resume">Resume<span class="required-asterisk">*</span> :</label> <br>
+        <input type="file" name="resume" id="resume" formControlName="resume" (change)="onFileChange($event)">
+        <div *ngIf="f.resume.invalid && (f.resume.touched ||f.resume.dirty)">
+            <div *ngIf="f.resume.errors?.required"  class="error-message">Resume File is required.</div>
+        </div>
+    </div>
+    <div>
+        <label for="joiningDate">Joining Date<span class="required-asterisk">*</span> :</label> <br>
+        <input type="date" name="joiningDate" id="joiningDate" formControlName="joiningDate" [min]="minDate">
+        <div *ngIf="f.joiningDate.invalid && (f.joiningDate.touched ||f.joiningDate.dirty)">
+            <div *ngIf="f.joiningDate.errors?.required"  class="error-message">Joining Date is required.</div>
+        </div>
+    </div>
+    <div *ngIf="errorMessage">{{errorMessage}}</div>
+    <div class="button-group">
+        <button type="submit"><span>{{trainerId > 0 ? 'Update' : 'Add'}}</span> Trainer</button>
+        <button type="button" class="button btn-secondary" *ngIf="trainerId" (click)="goBack()">
+            Back</button>
+    </div>
+ 
+
+</form>
+
+<div *ngIf="added" class="popup-backdrop">
+    <div class="success-popup">
+      <p>Trainer <span>{{trainerId > 0 ? 'Updated' : 'Added'}}</span> Successfully!</p>
+      <button (click)="handleOkClick()">OK</button>
+    </div>
+</div>

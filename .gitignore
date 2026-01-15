@@ -1,0 +1,57 @@
+angularapp/.browserslistrc
+angularapp/.editorconfig
+angularapp/angular.json
+angularapp/karma.conf.js
+angularapp/package-lock.json
+angularapp/tsconfig.app.json
+angularapp/tsconfig.json
+angularapp/tsconfig.spec.json
+angularapp/tslint.json
+angularapp/node_modules/
+angularapp/src/global.ts
+
+junit/
+karma/
+
+
+springapp/.mvn
+springapp/target
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+angularapp/src/gobal.ts
+>>>>>>> dfe0001021bfdb74412476aa6669d395f6296e91
+
+
+<<<<<<< HEAD
+=======
+junit/
+karma/
+
+springapp/.mvn
+springapp/target
+springapp/src/main/resources/application-local.properties
+>>>>>>> 8c3d2a1ed74603428b1a6b71e89ba18df0682d3f
+>>>>>>> d136cb66e77d4fabb26f36c7c846bd1dcfe0047a
+<<<<<<< HEAD
+<<<<<<< HEAD
+springapp/src/main/resources/application-local.properties
+=======
+>>>>>>> 546caa824cad9fcd03ca4e6d22dcc25f7f4570f8
+>>>>>>> c459af3954ee0782df78890f93e9446e84bfaf77
+=======
+>>>>>>> dfe0001021bfdb74412476aa6669d395f6296e91
+
+springapp/src/main/resources/application-local.properties
+<<<<<<< HEAD
+>>>>>>> 6502e48432ad2f8b5bc52eddafa728b9b8034ef8
+=======
+>>>>>>> 91fec6dcc83d057e1ffd0e1b6d9f3392366f8269
+>>>>>>> c459af3954ee0782df78890f93e9446e84bfaf77

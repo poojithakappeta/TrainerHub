@@ -1,0 +1,180 @@
+/* Page background */
+.login-page {
+  display: flex;
+  align-items: flex-start;
+  /* Align to top */
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  /* Adjust height to leave space for navbar */
+  padding-top: 20px;
+  /* Small gap between navbar and card */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background image */
+.login-page img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) blur(3px);
+  z-index: -1;
+}
+
+/* Form card - smaller and closer to top */
+
+/* Form card */
+form {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  /* Horizontal padding already exists */
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 450px;
+  animation: fadeIn 0.6s ease;
+  margin-top: 0;
+}
+
+
+/* Heading */
+form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  /* Reduced gap below heading */
+  margin-top: 0.5rem;
+  /* Reduced gap above heading */
+  font-size: 1.6rem;
+  color: #1976d2;
+  font-weight: 700;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Inputs and select */
+input,
+select {
+  width: 100%;
+  padding: 10px 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  transition: border 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Error messages */
+/* Animated error popup */
+.error-popup {
+  position: relative;
+  background-color: #f44336;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 12px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: slideDownFade 0.5s ease-out;
+  z-index: 10;
+  text-align: center;
+}
+
+.error {
+  color: #f44336;
+
+}
+
+/* Animation for error popup */
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+  background: #1565c0;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+/* Login link */
+p {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+p a {
+  color: #1976d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}

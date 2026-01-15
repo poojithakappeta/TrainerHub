@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="user-info">
+    <span id="username">{{ username }}</span> |
+    <span id="role">{{ role }}</span>
+  </div>
+
+  <ul class="nav-list">
+    <li><a routerLink="/home">Home</a></li>
+
+    <li class="dropdown">
+      <a>Manager</a>
+      <ul class="dropdown-menu">
+        <li><a routerLink="/managerrequirement">Add Requirement</a></li>
+        <li><a routerLink="/managerviewrequirements">View Requirements</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+      </ul>
+    </li>
+
+    <li><a routerLink="/select-trainers">Selected Trainers</a></li>
+    <li><a routerLink="/viewFeedback">Feedback</a></li>
+    <li><a class="logout-btn" (click)="confirmLogout()">Logout</a></li>
+  </ul>
+</nav>
+<!-- Logout Confirmation Popup -->
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <div class="popup-content">
+    <p>Are you sure you want to logout?</p>
+    <button (click)="logout()">Yes</button>
+    <button (click)="cancelLogout()">No</button>
+  </div>
+</div>

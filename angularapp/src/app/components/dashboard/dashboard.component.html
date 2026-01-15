@@ -1,0 +1,87 @@
+<div class="dashboard-container">
+  <h1>TrainerHub Dashboard</h1>
+ 
+  <!-- Top Stats Cards -->
+  <div class="stats-grid">
+    <div class="card">
+      <h3>Total Trainers</h3>
+      <p>{{ animatedTotalTrainers }}</p>
+    </div>
+    <div class="card">
+      <h3>Total Requirements</h3>
+      <p>{{ animatedTotalRequirements }}</p>
+    </div>
+    <div class="card">
+      <h3>Trainers Assigned</h3>
+      <p>{{ animatedAssignedTrainers }}</p>
+    </div>
+    <div class="card">
+      <h3>Total Feedbacks</h3>
+      <p>{{ animatedTotalFeedbacks }}</p>
+    </div>
+  </div>
+ 
+  <!-- Charts Section -->
+  <div class="charts-grid">
+    <!-- Trainer Status Bar Chart -->
+    <div class="chart-card">
+      <h3>Trainer Status Distribution</h3>
+      <div class="bar-chart">
+        <div
+          class="bar"
+          *ngFor="let status of getTrainerStatusKeys(); let i = index"
+          [style.height.%]="getStatusPercent(status)"
+          [ngStyle]="{ 'background-color': barColors[i % barColors.length] }"
+        >
+          <span>{{ status }} ({{ trainerStatusCount[status] }})</span>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Requirements Assigned vs Unassigned Pie -->
+    <div class="chart-card">
+      <h3>Requirements Assignment</h3>
+      <div class="pie-chart">
+        <div class="slice assigned" [style.flex]="assignedTrainers"></div>
+        <div class="slice unassigned" [style.flex]="totalRequirements - assignedTrainers"></div>
+      </div>
+      <div class="legend">
+        <span class="legend-item assigned">Assigned</span>
+        <span class="legend-item unassigned">Unassigned</span>
+      </div>
+    </div>
+ 
+    <!-- Feedback Category Distribution -->
+    <div class="chart-card">
+      <h3>Feedback Category Distribution</h3>
+      <div class="bar-chart">
+        <div
+          class="bar"
+          *ngFor="let cat of getFeedbackCategoryKeys(); let i = index"
+          [style.height.%]="getFeedbackPercent(cat)"
+          [ngStyle]="{ 'background-color': barColors[i % barColors.length] }"
+        >
+          <span>{{ cat }} ({{ feedbackCategoryCount[cat] }})</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Recent Activity -->
+  <div class="recent-activity">
+    <h3>Recent Trainers</h3>
+    <ul>
+      <li *ngFor="let trainer of recentTrainers">{{ trainer.name | titlecase}} - {{ trainer.expertise | titlecase }}</li>
+    </ul>
+ 
+    <h3>Recent Requirements</h3>
+    <ul>
+      <li *ngFor="let req of recentRequirements">{{ req.title | titlecase}} - {{ req.department | titlecase}}</li>
+    </ul>
+  </div>
+ 
+  <!-- Export Button -->
+  <div class="export-section">
+    <button (click)="exportToCSV()">Export Dashboard Stats</button>
+  </div>
+</div>

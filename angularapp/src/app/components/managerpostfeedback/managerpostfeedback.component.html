@@ -1,0 +1,52 @@
+<h1>Add Feedback</h1>
+<form [formGroup]="feedbackForm" (ngSubmit)="addFeedback()">
+      <div>
+            <label for="feedbackText">Feedback*</label><br>
+            <textarea name="feedbackText" id="feedbackText" formControlName="feedbackText" cols="30"
+                  rows="10"></textarea>
+            <div *ngIf="f.feedbackText.touched || f.feedbackText.dirty || submitted">
+                  <div *ngIf="f.feedbackText.errors?.required">Feedback is required</div>
+            </div>
+      </div>
+      <div>
+            <label for="category">Category*</label><br>
+            <select name="category" id="category" formControlName="category">
+                  <option value="">-- Select Category --</option>
+                  <option value="clarity">Clarity of Explanation</option>
+                  <option value="language">Language Proficiency</option>
+                  <option value="pace">Pace of Delivery</option>
+                  <option value="others">Others</option>
+            </select>
+            <div *ngIf="f.category.touched || f.category.dirty || submitted">
+                  <div *ngIf="f.category.errors?.required">Category is required</div>
+            </div>
+      </div>
+
+      <div class="star-rating">
+            <label for="ratings">Rating (1 to 5)*</label>
+            <div class="stars">
+              <ng-container *ngFor="let star of [5,4,3,2,1]">
+                <input type="radio" [id]="'star' + star" formControlName="ratings" [value]="star" />
+                <label [for]="'star' + star" title="{{ star }} stars">&#9733;</label>
+              </ng-container>
+            </div>
+          
+            <div *ngIf="f.ratings.touched || f.ratings.dirty">
+              <div *ngIf="f.ratings.errors?.required">Rating is required</div>
+              <div *ngIf="f.ratings.errors?.min || f.ratings.errors?.max">Rating must be between 1 and 5</div>
+            </div>
+          </div>
+
+      <button type="submit">Submit</button>
+</form>
+
+
+<div class="popup-overlay" *ngIf="showAddPopup">
+      <div class="popup-box">
+            <h3>Success</h3>
+            <p>Feedback Added Successfully!</p>
+            <div class="popup-actions">
+                  <button class="confirm-btn" (click)="confirmAdd()">Ok</button>
+            </div>
+      </div>
+</div>

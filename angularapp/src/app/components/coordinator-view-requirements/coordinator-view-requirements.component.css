@@ -1,0 +1,183 @@
+/* Heading */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Search Input */
+ input[type="text"] {
+  width: 80%;
+  padding: 8px;
+  margin-right: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+ 
+button.reset {
+  background-color: #f44336; /* Red background */
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+  
+  button.reset:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #2196F3;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  /* Modal Styling */
+   .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+  } 
+  
+  /* Modal Header */
+  .modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Modal Subtitle */
+  modal-subtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  } 
+  
+  /* Search Input */
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Trainer List Items */
+  .trainer-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+  
+  /* Modal Buttons */
+  .modal button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  } 
+
+  .modal button:first-of-type {
+    margin-top: 5px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .modal button:last-of-type {
+    margin-top: 5px;
+    background-color: #f44336;
+    color: white;
+  }
+
+  
+  select option.recommended {
+  background-color: #e0f7fa; /* light blue */
+  font-weight: bold;
+  color: #007bff;
+}
+
+  
+
+  /* Common Button Style */
+button.assign-trainer {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px; /* Rounded button */
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover Effect */
+  button.assign-trainer:hover:enabled {
+    background-color: #388E3C; /* Darker green on hover */
+  }
+  
+  /* Disabled Button Style */
+  button.assign-trainer:disabled {
+    background-color: #C8E6C9; /* Light green */
+    color: #666; /* Dimmed text */
+    cursor: not-allowed;
+  }
+
+  select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: inherit;
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20viewBox%3D%220%200%2010%207%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200l5%207%205-7z%22%20fill%3D%22%23333%22/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 7px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 5px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+
+  
+ 

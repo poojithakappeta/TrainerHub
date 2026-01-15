@@ -1,0 +1,266 @@
+.trainer-details-container {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Section Heading */
+.trainer-details-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Flex layout for cards */
+.details-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Individual card styling */
+.trainer-info,
+.requirement-info {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Card headings */
+.trainer-info h3 {
+  margin-bottom: 15px;
+  color: #1976d2;
+  font-size: 20px;
+}
+.requirement-info h3 {
+  margin-bottom: 15px;
+  color: rgb(215, 129, 228);
+  font-size: 20px;
+}
+
+/* Card content */
+.trainer-info p,
+.requirement-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+b {
+  color: #333;
+}
+
+/* Buttons */
+button {
+  padding: 8px 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Arrow container */
+.arrow-container {
+  font-size: 32px;
+  color: #1976d2;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Confirmation Modal Overlay */
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.confirm-modal-content {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Text */
+.confirm-modal-content p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Modal Buttons */
+.confirm-modal-content button {
+  padding: 8px 14px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ok-button {
+  background-color: #28a745;
+  color: white;
+}
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+.confirm-modal-content button:hover {
+  opacity: 0.9;
+}
+
+/* Resume Modal Overlay */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Resume Modal Content */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Close Button */
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ff0000;
+}
+
+/* Resume Image */
+.modal-content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  max-height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Error Message */
+.modal-content p {
+  color: #d32f2f;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .details-box {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Feedback Section */
+.feedback-section {
+  width: 100%;
+  max-width: 850px;
+  margin-top: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #6a1b9a;
+}
+
+.feedback-card {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.feedback-card:last-child {
+  border-bottom: none;
+}
+
+.feedback-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #444;
+}

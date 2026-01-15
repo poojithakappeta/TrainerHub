@@ -1,0 +1,74 @@
+
+:host {
+    display: block;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  h3{
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  hr {
+    margin-bottom: 20px;
+    border: none;
+    border-top: 2px solid #ccc;
+  }
+  
+  .no-record {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  /* Flex container for cards */
+  .trainer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Individual card */
+  .trainer-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .trainer-card p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .trainer-card button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #3faa51;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .trainer-card button:hover {
+    background-color: #358943;
+  }
+  

@@ -1,0 +1,92 @@
+<div class="trainer-details-container" *ngIf="trainer && requirement">
+  <h2>Trainer Details</h2>
+
+  <div class="details-box">
+    <!-- Trainer Info -->
+    <div class="trainer-info">
+      <h3>{{ trainer.name }}</h3>
+      <p><b>Email:</b> {{ trainer.email }}</p>
+      <p><b>Phone:</b> {{ trainer.phone }}</p>
+      <p><b>Expertise:</b> {{ trainer.expertise }}</p>
+      <p><b>Experience:</b> {{ trainer.experience }}</p>
+      <p><b>Certification:</b> {{ trainer.certification }}</p>
+      <p><b>Status:</b> {{ trainer.status }}</p>
+      <p><b>Average Rating:</b> {{ calculateAverageRating() }}</p>
+      <button class="btn btn-primary" (click)="viewResume(trainer.resume)">View Resume</button>
+    </div>
+
+    <div class="arrow-container">➡</div>
+
+    <!-- Requirement Info -->
+    <div class="requirement-info">
+      <h3>Requirement Details</h3>
+      <p><b>Title:</b> {{ requirement.title }}</p>
+      <p><b>Description:</b> {{ requirement.description }}</p>
+      <p><b>Department:</b> {{ requirement.department }}</p>
+      <p><b>Duration:</b> {{ requirement.duration }}</p>
+      <p><b>Mode:</b> {{ requirement.mode }}</p>
+      <p><b>Location:</b> {{ requirement.location }}</p>
+      <p><b>Skill Level:</b> {{ requirement.skillLevel }}</p>
+      <p><b>Budget:</b> {{ requirement.budget }}</p>
+      <p><b>Priority:</b> {{ requirement.priority }}</p>
+      <p><b>Status:</b> {{ requirement.status }}</p>
+
+      <div class="action-buttons" *ngIf="requirement.status.includes('Open')">
+        <button class="btn btn-success" (click)="acceptTrainer()">Accept Trainer</button>
+        <button class="btn btn-danger" (click)="rejectTrainer()">Reject Trainer</button>
+      </div>
+    </div>
+
+    <!-- Feedback Section -->
+
+    <div class="feedback-section" *ngIf="feedbacks">
+      <h3>Trainer Feedbacks</h3>
+      <div class="feedback-card" *ngFor="let feedback of feedbacks ">
+        <p><b>Reviewer:</b> {{ feedback.user?.name || 'Anonymous' }}</p>
+        <p><b>Comment:</b> {{ feedback.feedbackText }}</p>
+        <p><b>Rating:</b> {{ feedback.ratings }}/5</p>
+      </div>
+    </div>
+
+
+    <!-- No Feedback Message -->
+    <div class="feedback-section" *ngIf="!feedbacks">
+      <h3>Trainer Feedbacks</h3>
+      <p>No feedback available for this trainer.</p>
+    </div>
+
+    <!-- Accept Confirmation Modal -->
+    <div *ngIf="accept" class="confirm-modal">
+      <div class="confirm-modal-content">
+        <p>Do you want to accept this trainer?</p>
+        <button (click)="confirmAcceptTrainer()" class="ok-button">OK</button>
+        <button (click)="closeModal()" class="cancel-button">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Reject Confirmation Modal -->
+    <div *ngIf="reject" class="confirm-modal">
+      <div class="confirm-modal-content">
+        <p>Do you want to reject this trainer?</p>
+        <button (click)="confirmRejectTrainer()" class="ok-button">OK</button>
+        <button (click)="closeModal()" class="cancel-button">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Resume Preview Modal -->
+    <div *ngIf="showResumeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closeResumeModal()" (keydown)="closeResumeModal()">&times;</span>
+        <h3>Resume Preview</h3>
+
+        <img [src]="resumeUrl" alt="Resume" style="max-width: 100%; max-height: 500px;" (error)="imageLoadError = true"
+          *ngIf="!imageLoadError" />
+
+        <p *ngIf="imageLoadError">
+          Unable to load resume image.
+          <a [href]="resumeUrl" target="_self">Click here to view</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

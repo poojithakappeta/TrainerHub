@@ -1,0 +1,51 @@
+<h1>My Feedback</h1>
+
+<table border="2">
+  <thead>
+    <tr>
+      <th>S.No.</th>
+      <th>Feedback</th>
+      <th>Ratings</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fb of feedbacks; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ fb.feedbackText | titlecase }}</td>
+      <td>{{ fb.ratings || 'N/A' }}</td>
+      <td>
+        <button (click)="selectedtrainer(fb.trainer?.trainerId)" class="view">View Trainer Info</button>
+        <button (click)="openDeletePopup(fb.feedbackId)" class="del">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="feedbacks.length === 0">No Data found!</p>
+
+<!-- Trainer Info Modal -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal-content">
+
+    <button class="close-button" (click)="showModal = false" (keydown.enter)="showModal = false"
+      aria-label="Close modal">
+      &times;
+    </button>
+
+    <h3 class="modal-title">Trainer Details</h3>
+    <p><strong>Name:</strong> {{ trainer?.name }}</p>
+    <p><strong>Email:</strong> {{ trainer?.email }}</p>
+    <p><strong>Expertise:</strong> {{ trainer?.expertise }}</p>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal check -->
+<div class="modal-backdrop" *ngIf="showDeletePopup">
+  <div class="modal-content">
+    <h3>Confirm Delete</h3>
+    <p>Are you sure you want to delete this feedback?</p>
+    <button (click)="confirmDelete()" class="confirm-btn">Yes</button>
+    <button (click)="cancelDelete()" class="cancel-btn">No</button>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<h2>Feedback Received</h2>
+<hr>
+
+<div class="select-container">
+  Filter By Category :
+  <select name="category" id="category" #abc (change)="filterByCategory(abc.value)">
+    <option value="">All Categories</option>
+    <option value="clarity">Clarity of Explanation</option>
+    <option value="language">Language Proficiency</option>
+    <option value="pace">Pace of Delivery</option>
+    <option value="others">Others</option>
+  </select>
+</div>
+<div class="search-container">
+  <label for="searchTerm">Search by Manager or Trainer Name:</label>
+  <input type="text" [(ngModel)]="searchTerm" (input)="applySearch()" placeholder="Enter name">
+</div>
+
+<table border="1" *ngIf="feedbacks">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Manager Name</th>
+      <th>Trainer Name</th>
+      <th>Feedback</th>
+      <th>Posted Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let f of feedbacks ;index as i">
+    <td>{{i+1}}</td>
+    <td>{{f.user.username | titlecase}}</td>
+    <td>{{f.trainer.name | titlecase}}</td>
+    <td>{{f.feedbackText | titlecase}}</td>
+    <td>{{f.date | date : 'dd/MM/yy'}}</td>
+    <td> <button (click)="showProfile(f.user?.userId)">Manager Profile</button> <button
+        (click)="viewTrainer(f.trainer?.trainerId)">Trainer Profile</button></td>
+  </tr>
+</table>
+<div *ngIf="!feedbacks">
+  No feedbacks are found
+</div>
+
+<div class="modal" *ngIf="u">
+  <div class="modal-content">
+    <h3>Manager Details</h3>
+    <p>Email : {{user.email}}</p>
+    <p>Username : {{user.username}}</p>
+    <p>Mobile Number : {{user.mobileNumber}}</p>
+    <button (click)="closeModal()" class="close">Close</button>
+  </div>
+</div>
+
+
+
+<div class="modal" *ngIf="t">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeModal()">X</button>
+    <h3>Trainer Details</h3>
+    <p>Trainer Name: {{trainer.name}}</p>
+    <p>Expertise: {{trainer.expertise}}</p>
+    <p>Email: {{trainer.email}}</p>
+    <p>Phone: {{trainer.phone}}</p>
+  </div>
+</div>

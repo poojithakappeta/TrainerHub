@@ -1,0 +1,32 @@
+<div class="login-page">
+    <img src="assets\background.webp" alt="background">
+    <h1 class="page-title">
+        <span class="highlight">TRAINER</span> HUB
+    </h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" formControlName="email">
+            <div *ngIf="f.email.touched || f.email.dirty">
+                <div *ngIf="f.email.errors?.required" class="error">Email is Required </div>
+            </div>
+        </div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" formControlName="password">
+        <div *ngIf="f.password.touched || f.password.dirty">
+            <div *ngIf="f.password.errors?.required" class="error">Password is Required </div>
+
+        </div>
+        <div *ngIf="errorMessage"  class="error">
+            {{errorMessage}}
+
+        </div>
+        <div>
+            <button type="submit" [disabled]="loginForm.invalid">Login </button>
+        </div>
+        <p>
+            Don't have an account?
+            <a routerLink="/signup">Sign up</a>
+        </p>
+</form>
+</div>

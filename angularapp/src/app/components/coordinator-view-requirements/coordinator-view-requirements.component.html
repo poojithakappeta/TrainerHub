@@ -1,0 +1,57 @@
+<h1>Available Requirements</h1>
+
+<input type="text" placeholder="Search by Title or Department" [(ngModel)]="searchText" (input)="searchFilter()" /> <span> </span>
+<button (click)="reset()" class="reset">Reset</button>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Department</th>
+      <th>Posted Date</th>
+      <th>Status</th>
+      <th>Trainer Assigned</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let req of requirements; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ req.title }}</td>
+      <td>{{ req.department }}</td>
+      <td>{{ req.postedDate | date }}</td>
+      <td>{{ req.status }}</td>
+      <td>
+        {{ req.trainer ? getTrainerName(req.trainer.trainerId) : 'Not Assigned' }}
+      </td>
+      <td>
+        
+
+        <button class="assign-trainer" [disabled]="req.trainer" (click)="assignTrainer(req)">
+          Assign Trainer
+        </button>
+
+        <span *ngIf="req.trainer">Trainer Assigned</span>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal for assigning trainer --> 
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <h3>Assign Trainer</h3>
+    <select [(ngModel)]="selectedTrainerId">
+      <option [ngValue]="null">-- Select Trainer --</option>
+      <option *ngFor="let trainer of trainers" [ngValue]="trainer.trainerId" [ngClass]="{recommended : selectedRequirement?.title?.toLowerCase().includes(trainer.expertise.toLowerCase())}">
+        {{ trainer.name }} - {{ trainer.expertise }}
+      </option>
+    </select>
+    <br />
+    <button (click)="confirmAssignment()">Confirm</button>
+    <button (click)="showModal = false">Cancel</button>
+  </div>
+</div>  
+

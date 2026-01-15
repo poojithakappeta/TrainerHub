@@ -1,0 +1,84 @@
+<div class="login-page">
+  <img src="assets/images/background.webp" alt="background" />
+
+  <form [formGroup]="signUp" (ngSubmit)="onSignup()">
+    <h2>Sign Up</h2>
+
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" />
+      <div *ngIf="f.username.touched || f.username.dirty">
+        <div *ngIf="f.username.errors?.required" class="error">Username is required</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" />
+      <div *ngIf="f.email.touched || f.email.dirty">
+        <div *ngIf="f.email.errors?.required" class="error">Email is required</div>
+        <div *ngIf="f.email.errors?.pattern" class="error">Email pattern is required</div>
+      </div>
+    </div>
+
+    <button type="button" (click)="sendOtp()" [disabled]="!f.email">Send OTP</button>
+
+    <div class="form-group" *ngIf="isOtpSent">
+      <label for="otp">Enter OTP</label>
+      <input type="text" id="otp" formControlName="otp" name="otp" required />
+      <button type="button" (click)="verifyOtp()">Verify OTP</button>
+    </div>
+
+    <div>
+      <label for="mobileNumber">Mobile Number</label>
+      <input type="tel" id="mobileNumber" formControlName="mobileNumber" />
+      <div *ngIf="f.mobileNumber.touched || f.mobileNumber.dirty">
+        <div *ngIf="f.mobileNumber.errors?.required" class="error">Mobile Number is required</div>
+        <div *ngIf="f.mobileNumber.errors?.pattern" class="error">Mobile Number must be 10 digits</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" />
+      <div *ngIf="f.password.touched || f.password.dirty">
+        <div *ngIf="f.password.errors?.required" class="error">Password is required</div>
+        <div *ngIf="f.password.errors?.pattern" class="error">Password should contain required pattern</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" />
+      <div *ngIf="f.confirmPassword.touched || f.confirmPassword.dirty">
+        <div *ngIf="f.confirmPassword.errors?.required" class="error">Confirm password is required</div>
+        <div *ngIf="!pass" class="error">{{ errorMessage }}</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="userRole">User Role</label>
+      <select id="userRole" formControlName="userRole">
+        <option value="Manager">Manager</option>
+        <option value="Coordinator">Coordinator</option>
+      </select>
+    </div>
+
+
+    <!-- Animated error popup -->
+    <div *ngIf="errorMessage && pass" class="error-popup">
+      {{ errorMessage }}
+    </div>
+
+
+
+    <div>
+      <button type="submit" [disabled]="signUp.invalid">Sign Up</button>
+    </div>
+
+    <p>
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+  </form>
+</div>

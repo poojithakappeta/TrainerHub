@@ -1,0 +1,19 @@
+<footer class="footer" (click)="toggleModal()" (keydown)="toggleModal()" >
+    © 2025 <strong>TrainerHub</strong>
+  </footer>
+ 
+  <!-- Modal -->
+  <div class="modal" *ngIf="showModal" (click)="closeModal()" (keydown)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()"  (keydown)="stopPropagation()">
+      <h2>TrainerHub</h2>
+      <p>Since the IT industry is rapidly growing, there is a high demand for skilled trainers—many of whom work as freelancers.
+         To efficiently integrate, allocate, and manage them, this platform provides a streamlined solution.
+         Managers can raise requirements, give feedback, and track trainer performance, while Coordinators handle trainer management and oversee requirements.
+          Together, they ensure effective collaboration through search, filters, and profile-based features.
+      </p>
+      <p>Email: trainerhub&#64;ltimindtree.com </p>
+      <p>Phone: +91-8919553676</p>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+ 

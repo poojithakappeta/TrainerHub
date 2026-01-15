@@ -1,0 +1,23 @@
+
+<h2>Selected Trainers</h2>
+<hr>
+
+<div *ngIf="requirements.length == 0" class="no-record">
+  <p>Oops! No record found!</p>
+</div>
+
+<div class="trainer-grid">
+  <div *ngFor="let r of requirements" class="trainer-card">
+    <h3>{{r.trainer.name}} </h3> 
+    <p>Email: {{r.trainer.email}}</p>
+    <p>Phone: {{r.trainer.phone}}</p>
+    <p>Expertise: {{r.trainer.expertise | titlecase}}</p>
+    <p>Experience : {{r.trainer.experience}}</p>
+    <p>Certification : {{r.trainer.certification | titlecase}}</p>
+    <p>Requirement Title : {{r.title | titlecase}}</p>
+    <p>Status: {{r.status}}</p>
+    <button *ngIf="r.trainer?.trainerId" (click)="writeReview(r.trainer?.trainerId)">
+      Write a Review
+    </button>
+  </div>
+</div>

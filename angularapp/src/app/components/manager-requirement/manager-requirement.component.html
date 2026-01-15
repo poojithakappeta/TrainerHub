@@ -1,0 +1,140 @@
+
+<div class="requirement-form-container">
+    <h1>{{ isEditing ? 'Update Requirement' : 'Create New Requirement' }}</h1>
+     
+   <form [formGroup]="requirementForm" (ngSubmit)="addRequirement()">
+       <div>
+           <label for="title">Title: </label>
+           <input type="text" formControlName="title" id="title">
+           <div *ngIf=" (f.title.touched || f.title.dirty)">
+               <div *ngIf="f.title.errors?.required" class="error">Title is required</div>
+           </div>
+       </div>
+   
+       <div>
+           <label for="description">Description: </label>
+           <textarea formControlName="description" id="description" cols="30" rows="10"></textarea>
+           <div *ngIf="(f.description.touched || f.description.dirty)">
+               <div *ngIf="f.description.errors?.required" class="error">Description is required</div>
+           </div>
+       </div>
+
+    <div>
+        <label for="department">Department: </label>
+        <select formControlName="department" id="department">
+            <option selected value="" disabled>Select Department</option>
+            <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Sales">Sales</option>
+            <option value="IT Support">IT Support</option>
+            <option value="Administration">Administration</option>
+        </select>
+        <div *ngIf="(f.department.touched || f.department.dirty)">
+            <div *ngIf="f.department.errors?.required" class="error">Department is required</div>
+        </div>
+    </div>
+   
+       <div>
+           <label for="status">Status: </label>
+           <select formControlName="status" id="status">
+            <option value="Open">Open</option>
+               <option value="Closed">Closed</option>
+           </select>
+           <div *ngIf="(f.status.touched || f.status.dirty)">
+               <div *ngIf="f.status.errors?.required" class="error">status is required</div>
+           </div>
+       </div>
+   
+   
+       <div>
+           <label for="duration">Duration: </label>
+           <input type="text" formControlName="duration" id="duration">
+           <div *ngIf="(f.duration.touched || f.duration.dirty)">
+               <div *ngIf="f.duration.errors?.required" class="error">Duration is required</div>
+           </div>
+       </div>
+   
+       <div>
+           <label for="mode">Mode: </label>
+           <select formControlName="mode" id="mode">
+               <option selected value="" disabled>Select Mode</option>
+               <option value="Online">Online</option>
+               <option value="Offline">Offline</option>
+           </select>
+           <div *ngIf="(f.mode.touched || f.mode.dirty)">
+               <div *ngIf="f.mode.errors?.required" class="error">Mode is required</div>
+           </div>
+       </div>
+   
+       <div>
+           <label for="location">Location: </label>
+           <input type="text" formControlName="location" id="location">
+           <div *ngIf=" (f.location.touched || f.location.dirty)">
+               <div *ngIf="f.location.errors?.required" class="error">Location is required</div>
+           </div>
+       </div>
+   
+       <div>
+           <label for="skillLevel">Skill Level: </label>
+           <select formControlName="skillLevel" id="skillLevel">
+               <option selected value="skillLevel" disabled>Select Skill Level</option>
+               <option value="Beginner">Beginner</option>
+               <option value="Advanced">Advanced</option>
+           </select>
+           <div *ngIf="(f.skillLevel.touched || f.skillLevel.dirty)">
+               <div *ngIf="f.skillLevel.errors?.required" class="error">SkillLevel is required</div>
+           </div>
+       </div>
+   
+       <div>
+           <label for="budget">Budget: </label>
+           <input type="number" formControlName="budget" id="budget">
+           <div *ngIf=" (f.budget.touched || f.budget.dirty)">
+               <div *ngIf="f.budget.errors?.required" class="error">Budget is required</div>
+               <div *ngIf="f.budget.errors?.min" class="error">Budget cannot be negative.</div>
+           </div>
+       </div>
+   
+   
+       <div>
+           <label for="priority">Priority: </label>
+           <select formControlName="priority" id="priority">
+               <option selected value="priority" disabled>Priority</option>
+               <option value="low"> Low</option>
+               <option value="medium">Medium</option>
+               <option value="high">High</option>
+           </select>
+           <div *ngIf=" (f.priority.touched || f.priority.dirty)">
+               <div *ngIf="f.priority.errors?.required" class="error">Priority is required</div>
+           </div>
+       </div>
+       <div class="button-group">
+           <button type="submit" class="btn btn-primary">
+             {{ isEditing ? 'Update Requirement' : 'Add Requirement' }}
+           </button>
+     
+         <button type="button" class="btn btn-secondary" *ngIf="isEditing" (click)="goBack()">
+             Back</button>
+         </div>
+       </form>
+       <div class="popup-overlay" *ngIf="showAddPopup">
+        <div class="popup-box">
+        <h3>Success</h3>
+        <p>Requirement Added Successfully!</p>
+        <div class="popup-actions">
+        <button class="confirm-btn" (click)="confirmAdd()">Ok</button>
+        </div>
+        </div>
+        </div>
+        <!-- Update Requirement Confirmation Popup -->
+        <div class="popup-overlay" *ngIf="showUpdatePopup">
+        <div class="popup-box">
+        <h3>Success</h3>
+        <p>Requirement Updated Successfully!</p>
+        <div class="popup-actions">
+        <button class="confirm-btn" (click)="confirmUpdate()">Ok</button>
+        </div>
+        </div>
+        </div>
