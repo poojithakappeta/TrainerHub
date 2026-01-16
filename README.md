@@ -85,16 +85,14 @@ Relationships:
 - Feedback → Trainer (Many-to-One)
 
 ---
-
 ## Technology Stack
 
-| Layer    | Technologies                   |
-|----------|---------------=----------------|
-| Frontend | Angular, HTML, CSS, TypeScript |
-| Backend  | Spring Boot, Java              |
-| Security | JWT, Spring Security           |
-| Database | MySQL                          |
-| Tools    | Git, GitHub, VS Code           |
-
+| Layer     | Technologies |
+|-----------|--------------|
+| Frontend  | Angular, HTML, CSS, TypeScript |
+| Backend   | Spring Boot, Java |
+| Security  | JWT, Spring Security |
+| Database  | MySQL |
+| Tools     | Git, GitHub, VS Code |
 
 
