@@ -20,8 +20,8 @@
         <div *ngIf="f.email.errors?.pattern" class="error">Email pattern is required</div>
       </div>
     </div>
-
-    <button type="button" (click)="sendOtp()" [disabled]="!f.email">Send OTP</button>
+<!-- 
+    <button type="button" (click)="sendOtp()" [disabled]="!f.email">Send OTP</button> -->
 
     <div class="form-group" *ngIf="isOtpSent">
       <label for="otp">Enter OTP</label>
