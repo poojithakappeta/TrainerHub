@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: 'root'
 })
 export class OtpService {
-  private baseUrl = 'http://localhost:8080/api/otp';
+  private baseUrl = 'https://trainerhub-production-83d8.up.railway.app/api/otp';
  
   constructor(private http: HttpClient) {}
  
