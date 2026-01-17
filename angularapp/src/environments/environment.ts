@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8081'
+  apiUrl: 'https://trainerhub-production-83d8.up.railway.app'
 };
