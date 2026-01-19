@@ -44,7 +44,9 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         )
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
-                "/api/**"
+                "/api/login",
+        "/api/register",
+        "/api/otp/**"
             ).permitAll()
 
             .requestMatchers("/api/trainer/**")
