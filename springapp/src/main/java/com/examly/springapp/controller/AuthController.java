@@ -31,16 +31,25 @@ public class AuthController {
         this.userRepo = userRepo;
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> getLogin(@Valid @RequestBody LoginDTO loginDTO) {
-        String token = userService.login(loginDTO.getEmail(),loginDTO.getPassword());
-        System.out.println(token);
-        
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setToken(token);
+   @PostMapping("/login")
+public ResponseEntity<?> getLogin(@Valid @RequestBody LoginDTO loginDTO) {
+    try {
+        String token = userService.login(
+            loginDTO.getEmail(),
+            loginDTO.getPassword()
+        );
 
-        return ResponseEntity.status(200).body(loginResponse);
+        LoginResponse response = new LoginResponse();
+        response.setToken(token);
+
+        return ResponseEntity.ok(response);
+
+    } catch (Exception e) {
+        return ResponseEntity.status(401)
+            .body("Invalid email or password");
     }
+}
+
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody User user) {

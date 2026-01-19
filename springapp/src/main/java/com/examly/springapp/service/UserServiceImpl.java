@@ -58,20 +58,26 @@ public class UserServiceImpl implements UserService {
     return userRepo.findAll();
   }
 
-  @Override
-  public String login(String email, String password) {
-    Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken(email, password));
-    if (authentication.isAuthenticated()) {
-      User user = userRepo.findByEmail(email);
-      Map<String, Object> claims = new HashMap<>();
-      claims.put("userId",user.getUserId());
-      claims.put("role",user.getUserRole());
-      claims.put("username",user.getUsername());
-      return jwtService.generateToken(email, claims);
+ @Override
+public String login(String email, String password) {
+    try {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(email, password)
+        );
+
+        User user = userRepo.findByEmail(email);
+
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", user.getUserId());
+        claims.put("role", user.getUserRole());
+        claims.put("username", user.getUsername());
+
+        return jwtService.generateToken(email, claims);
+
+    } catch (Exception e) {
+        throw new RuntimeException("Invalid email or password");
     }
-    return null;
-  }
+}
 
   @Override
   public User getUserById(Long userId) {
