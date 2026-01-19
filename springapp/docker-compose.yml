@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+
+  backend:
+    build: .
+    container_name: spring-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/appdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USERNAME: appuser
+      DB_PASSWORD: apppass
+
+      JWT_SECRET: 357638792F423F4428472B4B6250655368566D597133743677397A2443264629
+
+      MAIL_USERNAME: poojithakappeta3@gmail.com
+      MAIL_PASSWORD: xvnovvlhtmudwolc

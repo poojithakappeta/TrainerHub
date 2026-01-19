@@ -34,46 +34,38 @@ public class SecurityConfig {
     private CorsConfigurationSource corsConfigurationSource;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
-            // ✅ THIS IS THE MISSING LINK
-            .cors(cors -> cors.configurationSource(corsConfigurationSource))
+    http
+        .cors(cors -> cors.configurationSource(corsConfigurationSource))
+        .csrf(csrf -> csrf.disable())
+        .sessionManagement(session ->
+            session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        )
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers(
+                "/api/login",
+                "/api/register",
+                "/api/otp/**"
+            ).permitAll()
 
-            // JWT → no CSRF
-            .csrf(csrf -> csrf.disable())
+            .requestMatchers("/api/trainer/**")
+                .hasAnyAuthority("Coordinator", "Manager")
 
-            .sessionManagement(session ->
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            )
+            .requestMatchers("/api/requirement/**")
+                .hasAnyAuthority("Manager", "Coordinator")
 
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                        "/api/register",
-                        "/api/login",
-                        "/api/otp/**",
-                        "/images/**"
-                ).permitAll()
+            .requestMatchers("/api/feedback/**")
+                .hasAnyAuthority("Manager", "Coordinator")
 
-                .requestMatchers("/api/trainer/**")
-                    .hasAnyRole("Coordinator", "Manager")
+            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .authenticationProvider(authenticationProvider())
+        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-                .requestMatchers("/api/requirement/**")
-                    .hasAnyRole("Manager", "Coordinator")
-
-                .requestMatchers("/api/feedback/**")
-                    .hasAnyRole("Manager", "Coordinator")
-
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
-                .anyRequest().authenticated()
-            )
-
-            .authenticationProvider(authenticationProvider())
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
+    return http.build();
+}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
