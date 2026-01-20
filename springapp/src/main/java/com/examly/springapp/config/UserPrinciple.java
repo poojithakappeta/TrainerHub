@@ -16,12 +16,13 @@ public class UserPrinciple implements UserDetails {
         this.user = user;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(
-            new SimpleGrantedAuthority(user.getUserRole())
-        );
-    }
+ @Override
+public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(
+        new SimpleGrantedAuthority(user.getUserRole())
+    );
+}
+
 
     @Override
     public String getPassword() {
