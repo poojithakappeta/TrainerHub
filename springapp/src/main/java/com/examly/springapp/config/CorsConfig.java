@@ -19,7 +19,7 @@ public class CorsConfig {
         // ✅ Allowed frontend origins
         config.setAllowedOrigins(List.of(
                 "http://localhost:4200",
-                "https://soft-chebakia-9ef9ec.netlify.app"
+                "https://trainer-hub-git-main-poojitha-kappetas-projects.vercel.app"
         ));
 
         // ✅ Allowed HTTP methods
