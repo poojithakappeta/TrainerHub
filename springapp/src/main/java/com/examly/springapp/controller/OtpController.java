@@ -24,13 +24,18 @@ public class OtpController {
     }
  
  
-    @PostMapping("/send")
-    public ResponseEntity<Map<String, String>> sendOtp(@RequestBody String email) {
-        Map<String, String> response = new HashMap<>();
-        response=otpService.sendOtp(email);
-        response.put("message", "OTP sent successfully");
-        return ResponseEntity.ok(response);
-    }
+   @PostMapping("/send")
+public ResponseEntity<Map<String, String>> sendOtp(
+        @RequestBody Map<String, String> request) {
+
+    String email = request.get("email");
+
+    Map<String, String> response = otpService.sendOtp(email);
+    response.put("message", "OTP sent successfully");
+
+    return ResponseEntity.ok(response);
+}
+
  
  
     @PostMapping("/verify")

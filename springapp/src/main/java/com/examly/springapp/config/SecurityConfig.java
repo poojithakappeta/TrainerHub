@@ -41,15 +41,15 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     return http
         .cors(Customizer.withDefaults())   // ⭐ MUST
         .csrf(csrf -> csrf.disable())
-        .authorizeHttpRequests(auth -> auth
-            .requestMatchers(
-                "/api/login",
-                "/api/register",
-                "/api/otp/**"
-            ).permitAll()
-            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .anyRequest().authenticated()
-        )
+       .authorizeHttpRequests(auth -> auth
+    .requestMatchers(HttpMethod.POST, "/api/otp/send").permitAll()
+    .requestMatchers(HttpMethod.POST, "/api/otp/verify").permitAll()
+    .requestMatchers("/api/login", "/api/register").permitAll()
+    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+    .anyRequest().authenticated()
+)
+
+        
         .sessionManagement(sess ->
             sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         )
