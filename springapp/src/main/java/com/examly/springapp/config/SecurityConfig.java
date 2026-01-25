@@ -32,11 +32,14 @@ public class SecurityConfig {
 
     @Autowired
     private CorsConfigurationSource corsConfigurationSource;
-@Bean
+
+  
+  @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
-        .csrf().disable()
-        .authorizeHttpRequests()
+        .cors(cors -> cors.configurationSource(corsConfigurationSource)) // ⭐ ADD THIS
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/api/register",
                 "/api/login",
@@ -45,14 +48,15 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             ).permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated()
-        .and()
-        .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
+        )
+        .sessionManagement(sess ->
+            sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        )
         .authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
         .build();
 }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
