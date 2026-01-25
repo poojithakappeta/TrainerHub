@@ -17,9 +17,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final CorsConfigurationSource corsConfigurationSource;
 
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            CorsConfigurationSource corsConfigurationSource) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.corsConfigurationSource = corsConfigurationSource;
     }
 
     @Bean
@@ -27,22 +31,20 @@ public class SecurityConfig {
 
         http
             .csrf(csrf -> csrf.disable())
-            .cors(Customizer.withDefaults())
+
+            // 🔴 THIS LINE IS CRITICAL
+            .cors(cors -> cors.configurationSource(corsConfigurationSource))
+
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-
-                // ✅ PUBLIC ENDPOINTS
                 .requestMatchers(
                     "/api/login",
                     "/api/register",
                     "/api/otp/**"
                 ).permitAll()
-
-                // ✅ REQUIRED for browser preflight
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
                 .anyRequest().authenticated()
             );
 
@@ -54,7 +56,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // 🔴 THIS BEAN WAS MISSING (CRASH FIX)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
