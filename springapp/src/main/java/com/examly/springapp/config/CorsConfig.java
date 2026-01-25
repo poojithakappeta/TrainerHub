@@ -17,9 +17,10 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(false);
 
-        config.setAllowedOrigins(List.of(
-            "https://trainer-hub-git-main-poojitha-kappetas-projects.vercel.app"
-        ));
+config.setAllowedOrigins(List.of(
+    "https://trainer-hub-five.vercel.app"
+));
+
 
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of(
