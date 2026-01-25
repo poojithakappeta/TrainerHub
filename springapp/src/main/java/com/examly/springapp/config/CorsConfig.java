@@ -15,12 +15,14 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
 
         CorsConfiguration config = new CorsConfiguration();
+
         config.setAllowCredentials(false);
 
-config.setAllowedOrigins(List.of(
-    "https://trainer-hub-five.vercel.app"
-));
-
+        config.setAllowedOrigins(List.of(
+            "https://trainer-hub-five.vercel.app",
+            "https://trainer-hub-git-main-poojitha-kappetas-projects.vercel.app",
+            "https://trainer-9xkgbka7x-poojitha-kappetas-projects.vercel.app"
+        ));
 
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of(
@@ -29,6 +31,7 @@ config.setAllowedOrigins(List.of(
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
+
         source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
