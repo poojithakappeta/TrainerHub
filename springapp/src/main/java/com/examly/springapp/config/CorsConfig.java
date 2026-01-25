@@ -16,11 +16,11 @@ public class CorsConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        // ✅ Your frontend domains
+        // ✅ EXACT FRONTEND ORIGINS (NO SLASH AT END)
         config.setAllowedOrigins(List.of(
-            "https://trainerhub-backend-bcdd.onrender.com",
-            "https://trainerhub.vercel.app",
-            "https://trainer-9xkgbka7x-poojitha-kappetas-projects.vercel.app"
+            "https://trainer-hub-five.vercel.app",
+            "https://trainer-hub-git-main-poojitha-kappetas-projects.vercel.app",
+            "https://trainer-2pua6rf2b-poojitha-kappetas-projects.vercel.app"
         ));
 
         config.setAllowedMethods(List.of(
@@ -28,12 +28,15 @@ public class CorsConfig {
         ));
 
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(false); // IMPORTANT for JWT
+        config.setExposedHeaders(List.of("Authorization"));
+
+        // ⚠️ JWT → no cookies
+        config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
-
         source.registerCorsConfiguration("/**", config);
+
         return source;
     }
 }
