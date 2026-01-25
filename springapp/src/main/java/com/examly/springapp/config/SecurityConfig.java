@@ -1,6 +1,7 @@
 package com.examly.springapp.config;
 
-import java.beans.Customizer;
+import org.springframework.security.config.Customizer;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
