@@ -1,5 +1,7 @@
 package com.examly.springapp.config;
 
+import java.beans.Customizer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,18 +35,17 @@ public class SecurityConfig {
     @Autowired
     private CorsConfigurationSource corsConfigurationSource;
 
-  
   @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
     return http
-        .cors(cors -> cors.configurationSource(corsConfigurationSource)) // ⭐ ADD THIS
+        .cors(Customizer.withDefaults())   // ⭐ MUST
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
-                "/api/register",
                 "/api/login",
-                "/api/otp/**",
-                "/images/**"
+                "/api/register",
+                "/api/otp/**"
             ).permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated()
@@ -52,8 +53,8 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         .sessionManagement(sess ->
             sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         )
-        .authenticationProvider(authenticationProvider())
-        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter.class)
         .build();
 }
 
