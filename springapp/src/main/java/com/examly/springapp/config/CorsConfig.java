@@ -1,12 +1,12 @@
 package com.examly.springapp.config;
 
-import java.util.List;
+import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 @Configuration
 public class CorsConfig {
@@ -16,27 +16,23 @@ public class CorsConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        // ✅ EXACT FRONTEND ORIGINS (NO SLASH AT END)
-        config.setAllowedOrigins(List.of(
+        config.setAllowedOrigins(Arrays.asList(
             "https://trainer-hub-five.vercel.app",
             "https://trainer-hub-git-main-poojitha-kappetas-projects.vercel.app",
             "https://trainer-2pua6rf2b-poojitha-kappetas-projects.vercel.app"
         ));
 
-        config.setAllowedMethods(List.of(
+        config.setAllowedMethods(Arrays.asList(
             "GET", "POST", "PUT", "DELETE", "OPTIONS"
         ));
 
-        config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("Authorization"));
-
-        // ⚠️ JWT → no cookies
-        config.setAllowCredentials(false);
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
 
+        source.registerCorsConfiguration("/**", config);
         return source;
     }
 }

@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import {
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
-
+import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +10,7 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
 
-    // ❌ Do NOT attach token for public APIs
+    // ✅ DO NOT ATTACH TOKEN FOR PUBLIC APIs
     if (
       request.url.includes('/api/otp') ||
       request.url.includes('/api/login') ||
@@ -26,7 +21,7 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor {
 
     const token = this.authService.getToken();
 
-    if (token && token.startsWith('Bearer ')) {
+    if (token) {
       request = request.clone({
         setHeaders: {
           Authorization: token
