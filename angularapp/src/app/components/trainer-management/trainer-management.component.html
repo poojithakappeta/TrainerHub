@@ -48,9 +48,9 @@
     <div>
         <label for="resume">Resume<span class="required-asterisk">*</span> :</label> <br>
         <input type="file" name="resume" id="resume" formControlName="resume" (change)="onFileChange($event)">
-        <div *ngIf="f.resume.invalid && (f.resume.touched ||f.resume.dirty)">
+        <!-- <div *ngIf="f.resume.invalid && (f.resume.touched ||f.resume.dirty)">
             <div *ngIf="f.resume.errors?.required"  class="error-message">Resume File is required.</div>
-        </div>
+        </div> -->
     </div>
     <div>
         <label for="joiningDate">Joining Date<span class="required-asterisk">*</span> :</label> <br>
