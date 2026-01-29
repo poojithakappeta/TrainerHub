@@ -33,7 +33,7 @@ export class TrainerManagementComponent implements OnInit {
       experience: ['', [Validators.required]],
       certification: ['', [Validators.required]],
       joiningDate: ['', [Validators.required, Validators.min]],
-      resume: ['', Validators.required],
+      resume: [''],
       status: ['Active']
     })
 
@@ -51,7 +51,7 @@ export class TrainerManagementComponent implements OnInit {
           experience: [data.experience, [Validators.required]],
           certification: [data.certification, [Validators.required]],
           joiningDate: [data.joiningDate, [Validators.required, Validators.min]],
-          resume: ['', Validators.required],
+          resume: [''],
           status: ['Active']
         })
 
