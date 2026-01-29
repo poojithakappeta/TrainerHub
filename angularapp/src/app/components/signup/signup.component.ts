@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     this.signUp = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      otp: ['', [Validators.required]],
+      // otp: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)]],
       confirmPassword: ['', Validators.required],
@@ -64,31 +64,31 @@ export class SignupComponent implements OnInit {
   }
 
 
-  sendOtp() {
-    this.authService.sendOtp(this.signUp.value.email).subscribe(
-      (data) => {
-        console.log(data);
-        this.verificationData = data;
-        this.isOtpSent = true;
-        console.log(this.isOtpVerified);
-        alert('OTP sent to your email');
-      },
-      (error) => {
-        console.error('Error sending OTP:', error);
-        alert('Failed to send OTP as Email already registered');
-      });
+  // sendOtp() {
+  //   this.authService.sendOtp(this.signUp.value.email).subscribe(
+  //     (data) => {
+  //       console.log(data);
+  //       this.verificationData = data;
+  //       this.isOtpSent = true;
+  //       console.log(this.isOtpVerified);
+  //       alert('OTP sent to your email');
+  //     },
+  //     (error) => {
+  //       console.error('Error sending OTP:', error);
+  //       alert('Failed to send OTP as Email already registered');
+  //     });
 
-  }
-  verifyOtp() {
-    console.log(this.signUp.value.otp);
+  // }
+  // verifyOtp() {
+  //   console.log(this.signUp.value.otp);
 
-    if (this.verificationData.otp == this.signUp.value.otp) {
-      this.isOtpVerified = true;
-      alert('OTP verified');
-    } else {
-      alert('Invalid OTP');
-    }
-  }
+  //   if (this.verificationData.otp == this.signUp.value.otp) {
+  //     this.isOtpVerified = true;
+  //     alert('OTP verified');
+  //   } else {
+  //     alert('Invalid OTP');
+  //   }
+  // }
 
 
 }
