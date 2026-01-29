@@ -6,7 +6,6 @@ export interface Trainer{
     expertise:string;
     experience:string;
     certification:string;
-    resume:string;
-    joiningDate:Date;
+    joiningDate:string;
     status:string;
 }

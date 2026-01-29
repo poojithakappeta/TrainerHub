@@ -17,7 +17,7 @@ export class TrainerManagementComponent implements OnInit {
   errorMessage: string = '';
   added: boolean = false;
   updated: boolean = false;
-  resumeFile: File | null = null;
+  // resumeFile: File | null = null;
   minDate: string;
 
 
@@ -33,7 +33,6 @@ export class TrainerManagementComponent implements OnInit {
       experience: ['', [Validators.required]],
       certification: ['', [Validators.required]],
       joiningDate: ['', [Validators.required, Validators.min]],
-      resume: [''],
       status: ['Active']
     })
 
@@ -51,7 +50,6 @@ export class TrainerManagementComponent implements OnInit {
           experience: [data.experience, [Validators.required]],
           certification: [data.certification, [Validators.required]],
           joiningDate: [data.joiningDate, [Validators.required, Validators.min]],
-          resume: [''],
           status: ['Active']
         })
 
@@ -66,26 +64,26 @@ export class TrainerManagementComponent implements OnInit {
   }
 
 
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.resumeFile = file;
-    }
-  }
+  // onFileChange(event: any) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     this.resumeFile = file;
+  //   }
+  // }
 
 
   addTrainer() {
     if (this.trainerForm.valid) {
       const trainerData = this.trainerForm.value;
       if (this.trainerId > 0) {
-        this.trainerService.updateTrainer(this.trainerId, trainerData, this.resumeFile).subscribe((data) => {
+        this.trainerService.updateTrainer(this.trainerId, trainerData).subscribe((data) => {
           this.added = true;
           console.log(`Updated Data: ${data}`);
 
         })
       }
       else {
-        this.trainerService.addTrainer(trainerData, this.resumeFile).subscribe(
+        this.trainerService.addTrainer(trainerData).subscribe(
           (data) => {
             this.added = true;
             console.log(data);
