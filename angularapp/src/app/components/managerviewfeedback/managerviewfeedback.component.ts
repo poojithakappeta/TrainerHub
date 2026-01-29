@@ -19,8 +19,7 @@ export class ManagerviewfeedbackComponent implements OnInit {
     expertise: "",
     experience: "",
     certification: "",
-    resume: "",
-    joiningDate: new Date(),
+    joiningDate: '',
     status: ""
   };
   deleteId: number | null = null;
