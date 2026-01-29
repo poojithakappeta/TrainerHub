@@ -44,29 +44,29 @@ public class TrainerController {
         return ResponseEntity.status(200).body(trainers);
     }
  
-    @PostMapping("/fileUpload")
-    @PreAuthorize("hasRole('Coordinator')")
-    public ResponseEntity<?> addTrainer(@Valid @RequestParam("file") MultipartFile uploadFile,
-            @RequestParam("data") String strTrainer) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            Trainer trainer = objectMapper.readValue(strTrainer, Trainer.class);
-            Trainer t = trainerService.addTrainerUF(uploadFile, trainer);
-            return ResponseEntity.status(201).body(t);
-        } catch (Exception e) {
-            return ResponseEntity.status(409).body(e.getMessage());
-        }
+    // @PostMapping("/fileUpload")
+    // @PreAuthorize("hasRole('Coordinator')")
+    // public ResponseEntity<?> addTrainer(@Valid @RequestParam("file") MultipartFile uploadFile,
+    //         @RequestParam("data") String strTrainer) {
+    //     try {
+    //         ObjectMapper objectMapper = new ObjectMapper();
+    //         Trainer trainer = objectMapper.readValue(strTrainer, Trainer.class);
+    //         Trainer t = trainerService.addTrainerUF(uploadFile, trainer);
+    //         return ResponseEntity.status(201).body(t);
+    //     } catch (Exception e) {
+    //         return ResponseEntity.status(409).body(e.getMessage());
+    //     }
  
-    }
-     @PutMapping("/fileUpload/{trainerId}")
-    public ResponseEntity<Trainer> updateTrainer(
-            @PathVariable Long trainerId,
-            @RequestPart("file") MultipartFile uploadFile,
-            @RequestPart("data") String trainerJson) throws JsonProcessingException {
-        Trainer trainer = new ObjectMapper().readValue(trainerJson, Trainer.class);
-        Trainer updatedTrainer = trainerService.updateTrainerUF(trainerId, uploadFile, trainer);
-        return ResponseEntity.ok(updatedTrainer);
-    }
+    // }
+    //  @PutMapping("/fileUpload/{trainerId}")
+    // public ResponseEntity<Trainer> updateTrainer(
+    //         @PathVariable Long trainerId,
+    //         @RequestPart("file") MultipartFile uploadFile,
+    //         @RequestPart("data") String trainerJson) throws JsonProcessingException {
+    //     Trainer trainer = new ObjectMapper().readValue(trainerJson, Trainer.class);
+    //     Trainer updatedTrainer = trainerService.updateTrainerUF(trainerId, uploadFile, trainer);
+    //     return ResponseEntity.ok(updatedTrainer);
+    // }
 
     // dummy FOR TESTCASE
     @PostMapping

@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.examly.springapp.model.Trainer;
  
 public interface TrainerService {
-   Trainer addTrainerUF(MultipartFile uploadFile, Trainer trainer);
+   // Trainer addTrainerUF(MultipartFile uploadFile, Trainer trainer);
    Trainer addTrainer(Trainer trainer);
  
    Optional<Trainer> getTrainerById(Long trainerId);
@@ -17,7 +17,7 @@ public interface TrainerService {
  
    Trainer updateTrainer(Long trainerId, Trainer trainer);
    Trainer active(Long trainerId,Trainer trainer);
-   Trainer updateTrainerUF(Long id, MultipartFile uploadFile, Trainer trainer);
+   // Trainer updateTrainerUF(Long id, MultipartFile uploadFile, Trainer trainer);
  
    boolean deleteTrainer(Long trainerId);
 }

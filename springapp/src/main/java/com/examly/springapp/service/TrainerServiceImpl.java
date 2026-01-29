@@ -38,30 +38,30 @@ public class TrainerServiceImpl implements TrainerService {
    // this.trainerRepo = trainerRepo;
    // }
 
-   @Override
-   public Trainer addTrainerUF(MultipartFile uploadFile, Trainer trainer) {
-      if (trainerRepo.existsByEmail(trainer.getEmail())) {
-         throw new DuplicateTrainerException("Trainer already exists");
-      }
-      File directory = new File(uploadDir);
-      if (!directory.exists()) {
-         directory.mkdir();
-      }
-      long time = System.currentTimeMillis();
-      String fileName = uploadFile.getOriginalFilename();
-      String newFileName = fileName.substring(0, fileName.indexOf(".")) + time
-            + fileName.substring(fileName.indexOf("."));
-      Path filePath = Paths.get(uploadDir, newFileName);
-      try {
-         Files.write(filePath, uploadFile.getBytes());
+   // @Override
+   // public Trainer addTrainerUF(MultipartFile uploadFile, Trainer trainer) {
+   //    if (trainerRepo.existsByEmail(trainer.getEmail())) {
+   //       throw new DuplicateTrainerException("Trainer already exists");
+   //    }
+   //    File directory = new File(uploadDir);
+   //    if (!directory.exists()) {
+   //       directory.mkdir();
+   //    }
+   //    long time = System.currentTimeMillis();
+   //    String fileName = uploadFile.getOriginalFilename();
+   //    String newFileName = fileName.substring(0, fileName.indexOf(".")) + time
+   //          + fileName.substring(fileName.indexOf("."));
+   //    Path filePath = Paths.get(uploadDir, newFileName);
+   //    try {
+   //       Files.write(filePath, uploadFile.getBytes());
 
-      } catch (IOException e) {
-         throw new RuntimeException("unable to create file");
+   //    } catch (IOException e) {
+   //       throw new RuntimeException("unable to create file");
 
-      }
-      trainer.setResume(newFileName);
-      return trainerRepo.save(trainer);
-   }
+   //    }
+   //    trainer.setResume(newFileName);
+   //    return trainerRepo.save(trainer);
+   // }
 
    @Override
    public Trainer addTrainer(Trainer trainer) {
@@ -136,43 +136,43 @@ public class TrainerServiceImpl implements TrainerService {
       return null;
    }
 
-   @Override
-   public Trainer updateTrainerUF(Long id, MultipartFile uploadFile, Trainer trainer) {
-      Trainer existingTrainer = trainerRepo.findById(id)
-            .orElseThrow(() -> new RuntimeException("Trainer not found"));
+   // @Override
+   // public Trainer updateTrainerUF(Long id, MultipartFile uploadFile, Trainer trainer) {
+   //    Trainer existingTrainer = trainerRepo.findById(id)
+   //          .orElseThrow(() -> new RuntimeException("Trainer not found"));
 
-      // Optional: Check for email conflict if email is being updated
-      if (!existingTrainer.getEmail().equals(trainer.getEmail()) &&
-            trainerRepo.existsByEmail(trainer.getEmail())) {
-         throw new DuplicateTrainerException("Trainer with this email already exists");
-      }
+   //    // Optional: Check for email conflict if email is being updated
+   //    if (!existingTrainer.getEmail().equals(trainer.getEmail()) &&
+   //          trainerRepo.existsByEmail(trainer.getEmail())) {
+   //       throw new DuplicateTrainerException("Trainer with this email already exists");
+   //    }
 
-      // Handle file upload if a new file is provided
-      if (uploadFile != null && !uploadFile.isEmpty()) {
-         File directory = new File(uploadDir);
-         if (!directory.exists()) {
-            directory.mkdir();
-         }
+   //    // Handle file upload if a new file is provided
+   //    if (uploadFile != null && !uploadFile.isEmpty()) {
+   //       File directory = new File(uploadDir);
+   //       if (!directory.exists()) {
+   //          directory.mkdir();
+   //       }
 
-         long time = System.currentTimeMillis();
-         String fileName = uploadFile.getOriginalFilename();
-         String newFileName = fileName.substring(0, fileName.indexOf(".")) + time
-               + fileName.substring(fileName.indexOf("."));
-         Path filePath = Paths.get(uploadDir, newFileName);
+   //       long time = System.currentTimeMillis();
+   //       String fileName = uploadFile.getOriginalFilename();
+   //       String newFileName = fileName.substring(0, fileName.indexOf(".")) + time
+   //             + fileName.substring(fileName.indexOf("."));
+   //       Path filePath = Paths.get(uploadDir, newFileName);
 
-         try {
-            Files.write(filePath, uploadFile.getBytes());
-         } catch (IOException e) {
-            throw new RuntimeException("Unable to create file");
-         }
+   //       try {
+   //          Files.write(filePath, uploadFile.getBytes());
+   //       } catch (IOException e) {
+   //          throw new RuntimeException("Unable to create file");
+   //       }
 
-         trainer.setResume(newFileName);
-      } else {
-         trainer.setResume(existingTrainer.getResume()); // retain old resume
-      }
+   //       trainer.setResume(newFileName);
+   //    } else {
+   //       trainer.setResume(existingTrainer.getResume()); // retain old resume
+   //    }
 
-      trainer.setTrainerId(id); // ensure ID is preserved
-      return trainerRepo.save(trainer);
-   }
+   //    trainer.setTrainerId(id); // ensure ID is preserved
+   //    return trainerRepo.save(trainer);
+   // }
 
 }

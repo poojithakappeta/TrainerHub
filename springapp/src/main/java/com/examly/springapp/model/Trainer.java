@@ -35,8 +35,8 @@ public class Trainer {
     private String certification;
 
 
-    @NotBlank(message = "Resume link is required")
-    private String resume;
+    // @NotBlank(message = "Resume link is required")
+    // private String resume;
 
     @NotBlank(message = "Joining date is required")
     private String joiningDate;
@@ -49,7 +49,7 @@ public class Trainer {
     }
 
     public Trainer(Long trainerId, String name, String email, String phone, String expertise, String experience,
-            String certification, String resume, String joiningDate, String status) {
+            String certification, String joiningDate, String status) {
         this.trainerId = trainerId;
         this.name = name;
         this.email = email;
@@ -57,7 +57,6 @@ public class Trainer {
         this.expertise = expertise;
         this.experience = experience;
         this.certification = certification;
-        this.resume = resume;
         this.joiningDate = joiningDate;
         this.status = status;
     }
@@ -90,9 +89,9 @@ public class Trainer {
         this.certification = certification;
     }
 
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
+    // public void setResume(String resume) {
+    //     this.resume = resume;
+    // }
 
     public void setJoiningDate(String joiningDate) {
         this.joiningDate = joiningDate;
@@ -134,9 +133,9 @@ public class Trainer {
         return certification;
     }
 
-    public String getResume() {
-        return resume;
-    }
+    // public String getResume() {
+    //     return resume;
+    // }
 
     public String getJoiningDate() {
         return joiningDate;
